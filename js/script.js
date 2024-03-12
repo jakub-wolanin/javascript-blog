@@ -53,6 +53,9 @@ function generateTitleLinks(){
   console.log('Title list cleared.');
 
   /* for each article */
+  const articles = document.querySelectorAll(optArticleSelector);
+  for (let article of articles) {
+    const articleId = article.getAttribute('id');
 
     /* get the article id */
 
