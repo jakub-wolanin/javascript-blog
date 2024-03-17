@@ -89,7 +89,7 @@ function generateTags() {
     /* find tags wrapper */
     const tagsWrapper = article.querySelector(optArticleTagsSelector);
     /* make html variable with empty string */
-    tagsWrapper.innerHTML = '';
+    let html = '';
     /* get tags from data-tags attribute */
     const articleTags = article.getAttribute('data-tags');
     /* split tags into array */
