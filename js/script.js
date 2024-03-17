@@ -95,7 +95,7 @@ function generateTags() {
     /* split tags into array */
     const articleTagsArray = articleTags.split(' ');
     /* START LOOP: for each tag */
-
+    for(let tag of articleTagsArray){
     /* generate HTML of the link */
 
     /* add generated code to html variable */
@@ -106,5 +106,6 @@ function generateTags() {
 
     /* END LOOP: for every article: */
   }
+}
 }
 generateTags();
