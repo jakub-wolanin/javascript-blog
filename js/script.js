@@ -85,7 +85,7 @@ function generateTags(){
   let html = '';
 
   /* START LOOP: for every article: */
-
+  for (let article of articles) {
     /* find tags wrapper */
 
     /* make html variable with empty string */
