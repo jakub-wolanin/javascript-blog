@@ -72,8 +72,11 @@ function generateTitleLinks() {
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles';
+  optArticleTagsSelector = '.post-tags .list';
 
 generateTitleLinks();
+
+
 
 function generateTags(){
   /* find all articles */
