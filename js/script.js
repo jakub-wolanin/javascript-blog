@@ -76,15 +76,11 @@ const optArticleSelector = '.post',
 
 generateTitleLinks();
 
-
-
 function generateTags() {
   /* find all articles */
-  const articles = document.querySelectorAll(optArticleTagsSelector);
+  const articles = document.querySelectorAll(optArticleSelector);
 
-  let html = '';
-
-  /* START LOOP: for every article: */
+  /* START LOOP: for every article */
   for (let article of articles) {
     /* find tags wrapper */
     const tagsWrapper = article.querySelector(optArticleTagsSelector);
@@ -95,17 +91,15 @@ function generateTags() {
     /* split tags into array */
     const articleTagsArray = articleTags.split(' ');
     /* START LOOP: for each tag */
-    for(let tag of articleTagsArray){
-    /* generate HTML of the link */
+    for (let tag of articleTagsArray) {
+      /* generate HTML of the link */
 
-    /* add generated code to html variable */
-
-    /* END LOOP: for each tag */
+      /* add generated code to html variable */
 
     /* insert HTML of all the links into the tags wrapper */
 
-    /* END LOOP: for every article: */
+  /* END LOOP: for every article */
+    }
   }
-}
 }
 generateTags();
