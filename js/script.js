@@ -71,7 +71,7 @@ function generateTitleLinks() {
 
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles';
+  optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list';
 
 generateTitleLinks();
@@ -80,6 +80,9 @@ generateTitleLinks();
 
 function generateTags(){
   /* find all articles */
+  const articles = document.querySelectorAll(optArticleTagsSelector);
+
+  let html = '';
 
   /* START LOOP: for every article: */
 
