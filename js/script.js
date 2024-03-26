@@ -180,3 +180,16 @@ function generateAuthors() {
   }
   /* END LOOP: for every article */
 }
+
+function addClickListenersToAuthors() {
+  /* find all links to authors */
+  const authorLinks = document.querySelectorAll('a[href^="#author"]');
+
+  /* START LOOP: for each link */
+  authorLinks.forEach(function (link) {
+    /* add authorClickHandler as event listener for that link */
+    link.addEventListener('click', authorClickHandler);
+  });
+  /* END LOOP: for each link */
+}
+
