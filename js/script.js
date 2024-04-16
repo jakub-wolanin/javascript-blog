@@ -60,7 +60,7 @@ function generateTitleLinks(customSelector = '') {
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
     /* insert link into html variable */
-    html = html + linkHTML;
+    html += linkHTML;
   }
 
   titleList.innerHTML = html;
@@ -185,7 +185,8 @@ function authorClickHandler(event) {
 }
 
 function generateTags() {
-  /* [NEW] create a new variable allTags with an empty array */
+  /* create a new variable allTags with an empty object */
+  allTags = {};
 
   /* find all articles */
   const articles = document.querySelectorAll('article');
@@ -214,9 +215,9 @@ function generateTags() {
       /* add generated code to html variable */
       html += linkHTML;
 
-      /* [NEW] check if this link is NOT already in allTags */
+      /* check if this link is NOT already in allTags */
       if (!allTags.hasOwnProperty(tag)) {
-        /* [NEW] add tag to allTags object */
+        /* add tag to allTags object */
         allTags[tag] = 1;
       } else {
         allTags[tag]++;
@@ -229,9 +230,37 @@ function generateTags() {
     /* END LOOP: for every article: */
   }
 
-  /* [NEW] find list of tags in right column */
-  tagList = document.querySelector(optTagsListSelector); // Przypisanie wartości do zmiennej globalnej tagList
-  /* [NEW] add html from allTags to tagList */
+  /* find list of tags in right column */
+  tagList = document.querySelector(optTagsListSelector);
+
+  // Calculate and log tags parameters
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams);
+
+  // Log each tag usage
+  for (let tag in allTags) {
+    console.log(tag + ' is used ' + allTags[tag] + ' times');
+  }
+
+  function calculateTagsParams(tags) {
+    const params = {
+      min: 999999,
+      max: 0
+    };
+
+    for (let tag in tags) {
+      if (tags[tag] > params.max) {
+        params.max = tags[tag];
+      }
+      if (tags[tag] < params.min) {
+        params.min = tags[tag];
+      }
+    }
+
+    return params;
+  }
+
+  /* add html from allTags to tagList */
   let allTagsHTML = '';
 
   for (let tag in allTags) {
@@ -240,12 +269,10 @@ function generateTags() {
 
   tagList.innerHTML = allTagsHTML;
 
-  // Dodanie nasłuchiwania zdarzeń do tagów po ich wygenerowaniu
+  // Adding event listeners to tags after generating them
   addClickListenersToTags();
 }
 
 generateTags();
-
 generateAuthors();
 addClickListenersToAuthors();
-
