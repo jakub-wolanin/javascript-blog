@@ -78,6 +78,9 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list';
 const optArticleAuthorSelector = '.post-author';
+const optCloudClassCount = 5
+const optCloudClassPrefix = "tag-size-"
+
 
 generateTitleLinks();
 
@@ -184,6 +187,16 @@ function authorClickHandler(event) {
   generateTitleLinks('[data-author="' + author + '"]');
 }
 
+function calculateTagClass(count, params) {
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
+  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
+
+  return optCloudClassPrefix + classNumber
+}
+
+
 function generateTags() {
   /* create a new variable allTags with an empty object */
   allTags = {};
@@ -264,7 +277,7 @@ function generateTags() {
   let allTagsHTML = '';
 
   for (let tag in allTags) {
-    allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + '</a> (' + allTags[tag] + ')</li>';
+    allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a> (' + allTags[tag] + ')</li>';
   }
 
   tagList.innerHTML = allTagsHTML;
