@@ -147,3 +147,14 @@ body {
 .tag-size-5 {
   font-size: 20px;
 }
+
+.post-tags .list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post-tags .list li {
+  margin-right: 5px;
+}
